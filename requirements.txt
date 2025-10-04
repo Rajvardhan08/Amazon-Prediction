@@ -1,3 +1,4 @@
+haversine
 streamlit
 pandas
 scikit-learn
