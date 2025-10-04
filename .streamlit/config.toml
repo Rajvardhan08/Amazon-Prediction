@@ -1,0 +1,5 @@
+[server]
+headless = true
+
+[git]
+lfs = true
