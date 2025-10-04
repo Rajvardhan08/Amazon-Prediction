@@ -43,38 +43,48 @@ def get_user_inputs():
     
     age = st.sidebar.slider('Delivery Person Age', 18, 50, 25)
     ratings = st.sidebar.slider('Delivery Person Rating', 1.0, 5.0, 4.5, 0.1)
-    distance = st.sidebar.slider('Distance (km)', 0.0, 50.0, 5.0, 0.5)
+    distance = st.sidebar.slider('Distance (km)', 0.0, 50.0, 5.0, 0.1)
+    store_longitude = st.sidebar.slider('Store Longitude', 0.0, 180.0, 90.0, 0.5)
+    store_latitude = st.sidebar.slider('Store Latitude', 0.0, 180.0, 90.0, 0.5)
+    drop_longitude = st.sidebar.slider('Drop Longitude', 0.0, 180.0, 90.0, 0.5)
+    drop_latitude = st.sidebar.slider('Drop Latitude', 0.0, 180.0, 90.0, 0.5)
+
     
     weather = st.sidebar.selectbox('Weather Conditions', 
-        ['Sunny', 'Stormy', 'Sandstorms', 'Windy', 'Fog'])
+        ['Sunny', 'Stormy', 'Sandstorms', 'Windy', 'Fog', 'Cloudy'])
         
     traffic = st.sidebar.selectbox('Road Traffic Density', 
         ['Low', 'Medium', 'Jam', 'High'])
         
-    vehicle_condition = st.sidebar.selectbox('Vehicle Condition', 
-        ['Excellent', 'Good', 'Poor'])
+    # vehicle_condition = st.sidebar.selectbox('Vehicle Condition', 
+    #     ['Excellent', 'Good', 'Poor'])
         
     order_type = st.sidebar.selectbox('Type of Order', 
-        ['Snack', 'Drinks', 'Buffet', 'Meal'])
+        ['Clothing', 'Electronics', 'Sports', 'Cosmetics', 'Toys', 'Apparel', 'Books', 'Home', 'Grocery', 'Jewelry', 'Kitchen', 'Outdoors', 'Pet Supplies', 'Shoes', 'Skincare', 'Snacks'
+])
 
     vehicle_type = st.sidebar.selectbox('Type of Vehicle', 
-        ['motorcycle', 'scooter', 'electric_scooter', 'van'])
+        ['motorcycle', 'scooter', 'bicycle', 'van'])
 
-    festival = st.sidebar.selectbox('Is it a festival?', ['No', 'Yes'])
-    city = st.sidebar.selectbox('City Type', ['Urban', 'Metropolitian', 'Semi-Urban'])
+    # festival = st.sidebar.selectbox('Is it a festival?', ['No', 'Yes'])
+    city = st.sidebar.selectbox('City Type', ['Urban', 'Metropolitian', 'Semi-Urban', 'Other'])
 
     # Create a dictionary from the inputs
     data = {
         'Delivery_person_Age': age,
         'Delivery_person_Ratings': ratings,
-        'Vehicle_condition': 2 if vehicle_condition == 'Excellent' else 1 if vehicle_condition == 'Good' else 0,
+        # 'Vehicle_condition': 2 if vehicle_condition == 'Excellent' else 1 if vehicle_condition == 'Good' else 0,
         'Distance_km': distance,
         # One-hot encoded features will be created from these
         'Weatherconditions': weather,
         'Road_traffic_density': traffic,
         'Type_of_order': order_type,
         'Type_of_vehicle': vehicle_type,
-        'Festival': festival,
+        # 'Festival': festival,
+        'Store_latitude': store_latitude,
+        'Store_longitude': store_longitude,
+        'Delivery_location_latitude': drop_latitude,
+        'Delivery_location_longitude': drop_longitude,
         'City': city
     }
     
